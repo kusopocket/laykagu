@@ -140,12 +140,13 @@ main { display: block; }
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 3rem;
+  gap: 3rem 0;
   max-width: 72.5rem;
   margin: 0 auto;
   padding: 3rem 1.25rem 1.5rem;
 }
-.hero-text { flex: 1 1 27.5rem; min-width: 0; }
+/* 文は 31rem（説明の文の幅 30rem に合わせる）まで広がり、残りの幅は動画の区画が取る（動画はその中の真ん中。折り返したあとも真ん中） */
+.hero-text { flex: 1 1 27.5rem; max-width: 31rem; min-width: 0; }
 .hero h1 {
   font-size: clamp(2rem, 4.6vw, 3.375rem);
   line-height: 1.3;
@@ -173,15 +174,19 @@ main { display: block; }
 .dimension::before { border-inline-end: 0; }
 .dimension::after { border-inline-start: 0; }
 
+/* 横の間隔は左右の余白で取る（文の右端と画面の右端の、ちょうど真ん中に動画が来る） */
 .hero-movie {
-  flex: 0 1 19rem;
+  flex: 1 1 22rem;
   min-width: 0;
-  margin-inline: auto;
+  padding-inline: 1.5rem;
+  display: flex;
+  justify-content: center;
 }
 /* 縦の動画を画面の図と同じ枠で。音は消して流し、コントロールで音を出せる */
 .hero-video {
   display: block;
-  width: 100%;
+  width: 19rem;
+  max-width: 100%;
   height: auto;
   background: var(--oat);
   border: 2px solid var(--ink);
