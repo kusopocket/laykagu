@@ -53,9 +53,10 @@
         <a class="button" href="/laykagu/features/">機能を見る</a>
       </div>
     </div>
-    <div class="shots" role="group" aria-label="アプリの画面">
-      <img src="/laykagu/assets/shots/ja-editor-3d.png" width="603" height="1311" alt="3D の画面。部屋に家具が置かれ、問題のある所に印が付いている">
-      <img src="/laykagu/assets/shots/ja-editor-2d.png" width="603" height="1311" alt="2D の図面の画面。部屋の名前と寸法、家具の配置が見える">
+    <div class="hero-movie">
+      <video class="hero-video" src="/laykagu/assets/video/promo-ja.mp4" poster="/laykagu/assets/video/promo-ja.jpg" width="720" height="1280" muted loop playsinline controls preload="none" aria-label="LayKagu の紹介動画（35 秒。音は消してあります）">
+        <a href="/laykagu/assets/video/promo-ja.mp4">紹介動画（MP4）を開く</a>
+      </video>
     </div>
   </div>
 <div class="scene-wrap">
@@ -79,6 +80,15 @@
   </svg>
 </div>
 </section>
+<script>
+  // 動きを減らす設定・データセーバーでは流さない（ポスターのまま。押せば流れる）
+  (() => {
+    const video = document.querySelector(".hero-video");
+    if (!video || matchMedia("(prefers-reduced-motion: reduce)").matches || navigator.connection?.saveData) return;
+    video.preload = "auto";
+    video.play().catch(() => {});
+  })();
+</script>
 
 <section class="rows">
   <div class="row">

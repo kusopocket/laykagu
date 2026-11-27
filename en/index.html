@@ -53,9 +53,10 @@
         <a class="button" href="../en/features/">See features</a>
       </div>
     </div>
-    <div class="shots" role="group" aria-label="App screens">
-      <img src="../assets/shots/en-editor-3d.png" width="603" height="1311" alt="The 3D view, with furniture placed in the rooms and marks where there are issues">
-      <img src="../assets/shots/en-editor-2d.png" width="603" height="1311" alt="The 2D plan, showing room names, dimensions, and furniture">
+    <div class="hero-movie">
+      <video class="hero-video" src="../assets/video/preview-en.mp4" poster="../assets/video/preview-en.jpg" width="590" height="1280" muted loop playsinline controls preload="none" aria-label="LayKagu app preview video (20 seconds, muted)">
+        <a href="../assets/video/preview-en.mp4">Open the app preview video (MP4)</a>
+      </video>
     </div>
   </div>
 <div class="scene-wrap">
@@ -79,6 +80,15 @@
   </svg>
 </div>
 </section>
+<script>
+  // 動きを減らす設定・データセーバーでは流さない（ポスターのまま。押せば流れる）
+  (() => {
+    const video = document.querySelector(".hero-video");
+    if (!video || matchMedia("(prefers-reduced-motion: reduce)").matches || navigator.connection?.saveData) return;
+    video.preload = "auto";
+    video.play().catch(() => {});
+  })();
+</script>
 
 <section class="rows">
   <div class="row">
